@@ -1,0 +1,9 @@
+# Host-networking override (Linux only): the container shares the host's network
+# stack, so torrent peers can connect inbound and DHT is not behind Docker's NAT.
+# Ports 8080, 11470 and 12470 are bound directly on the host; 11470/12470 bypass
+# nginx and therefore HTTP basic auth.
+#   HOST_NET=1 ./run-local.sh
+services:
+  stremio:
+    network_mode: host
+    ports: !reset []

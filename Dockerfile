@@ -84,6 +84,9 @@ RUN sed -i "s#const COMMIT_HASH = execSync('git rev-parse HEAD').toString().trim
 COPY ./load_localStorage.js ./src/load_localStorage.js
 RUN sed -i "/entry: {/a \\        loader: './src/load_localStorage.js'," webpack.config.js
 
+COPY ./best_stream.js ./src/best_stream.js
+RUN sed -i "/entry: {/a \\        beststream: './src/best_stream.js'," webpack.config.js
+
 RUN npm install -g pnpm@11 --force
 RUN pnpm install --frozen-lockfile --reporter=silent
 ARG COMMIT_HASH=
