@@ -1,0 +1,11 @@
+# Local-build override: builds the image from this checkout instead of pulling :latest.
+#   docker compose -f compose.yaml -f compose.dev.yaml up -d --build
+services:
+  stremio:
+    image: stremio-docker:dev
+    build:
+      context: .
+      args:
+        BRANCH: development
+        VERSION: dev
+        COMMIT_HASH: local
